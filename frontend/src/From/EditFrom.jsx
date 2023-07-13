@@ -31,27 +31,18 @@ function EditForm() {
 const editId = localStorage.getItem("editID")
   const handle_post_submiting_from = async () => {
     dispatch(updateContact(result,editId));
-  
-    try {
-      let res = await axios.put(
-        `http://localhost:8088/users/${editId}`,
-        result
-      );
-      toast({
-        title: `${res.data}`,
-        status: 'success',
-        duration: 4000,
-        isClosable: true,
-        position: "top",
-      })
-      navigate("/add_User");
-    } catch (err) {
-      console.log(err);
-    }
+    navigate("/add_User");
+
+ 
   };
 
   return (
     <div className="share">
+    
+        <h1 className="title" style={{
+        textAlign: 'center',
+        margin:"1em"
+      }}>Edit User</h1>
       <div className="shareWrapper">
         <hr className="shareHr" />
 

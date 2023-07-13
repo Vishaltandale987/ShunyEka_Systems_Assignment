@@ -3,6 +3,7 @@
   margin: auto;
   padding: 1em;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  
 }
 .shareWrapper {
   margin: auto;
@@ -16,4 +17,17 @@
     border: 1px solid black;
     margin-top: 1em;
     margin-bottom: 1em;
+}
+
+.text{
+  font-size: large;
+  font-weight: 600;
+}
+
+.single_data{
+  width: 50%;
+  margin: auto;
+  padding: 1em;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin-top: 5em;
 }

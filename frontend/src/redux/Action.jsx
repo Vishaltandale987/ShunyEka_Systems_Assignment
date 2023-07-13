@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ADD_CONTACT, CONTACT_ERROR, CONTACT_LOADING, CONTACT_SUCCESS, REMOVE_CONTACT, UPDATE_CONTACT } from "./Type";
-let backend_url = "http://localhost:8088/users"
+let backend_url = "https://shuny-eka-systems-server.vercel.app/users"
 
 export const getContacts = () => async (dispatch) => {
     dispatch({ type: CONTACT_LOADING });
@@ -31,7 +31,7 @@ export const addContact = (object) => async (dispatch) => {
 export const updateContact = (result,editId) => async (dispatch) => {
     dispatch({ type: CONTACT_LOADING });
     try {
-        let res = await axios.patch(`${backend_url}/${editId}`,result );
+        let res = await axios.put(`${backend_url}/${editId}`,result );
         alert(`${res.data}`);
 dispatch({ type: UPDATE_CONTACT, payload: res.data });
     } catch (e) {

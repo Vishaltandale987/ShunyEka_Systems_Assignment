@@ -24,7 +24,7 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-} from '@chakra-ui/react'
+} from "@chakra-ui/react";
 
 import "./style.css";
 import axios from "axios";
@@ -32,12 +32,13 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteContact, getContacts } from "../redux/Action";
 function Add_User() {
-
-  const { loading, error, contacts } = useSelector((store) => store.contactManager);
+  const { loading, error, contacts } = useSelector(
+    (store) => store.contactManager
+  );
   const dispatch = useDispatch();
   const [data, setdata] = useState();
   const navigate = useNavigate();
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
 
   // get data
@@ -50,17 +51,13 @@ function Add_User() {
     }
   };
 
-
-  // delete 
-const deleteID = localStorage.getItem("deleteID")
+  // delete
+  const deleteID = localStorage.getItem("deleteID");
   const deleteuser = async () => {
-    dispatch(deleteContact(deleteID,onClose));
-
-    
-  }
+    dispatch(deleteContact(deleteID, onClose));
+  };
 
   useEffect(() => {
-   
     dispatch(getContacts());
   }, [contacts]);
 
@@ -68,12 +65,18 @@ const deleteID = localStorage.getItem("deleteID")
     <div>
       <AddFrom />
       <div className="table">
+      <h1 className="title" style={{
+        textAlign: 'center',
+        margin:"1em"
+      }}>User Table</h1>
+
         <TableContainer>
           <Table variant="striped" colorScheme="teal">
             <Thead>
               <Tr>
                 <Th>Id</Th>
                 <Th>Name</Th>
+                <Th>Button</Th>
               </Tr>
             </Thead>
 
@@ -85,7 +88,16 @@ const deleteID = localStorage.getItem("deleteID")
                     <Td>{el.name}</Td>
                     <Td>
                       {" "}
-                      <Button colorScheme="green"> View</Button>{" "}
+                      <Button
+                        colorScheme="green"
+                        onClick={() => {
+                          localStorage.setItem("ViewID", el._id);
+                          navigate("/view");
+                        }}
+                      >
+                        {" "}
+                        View
+                      </Button>{" "}
                       <Button
                         colorScheme="facebook"
                         onClick={() => {
@@ -96,10 +108,16 @@ const deleteID = localStorage.getItem("deleteID")
                         {" "}
                         Edit
                       </Button>{" "}
-                      <Button colorScheme="red" onClick={() => {
+                      <Button
+                        colorScheme="red"
+                        onClick={() => {
                           localStorage.setItem("deleteID", el._id);
-                          onOpen()
-                      }}> Delete</Button>{" "}
+                          onOpen();
+                        }}
+                      >
+                        {" "}
+                        Delete
+                      </Button>{" "}
                     </Td>
                   </Tr>
                 );
@@ -112,17 +130,17 @@ const deleteID = localStorage.getItem("deleteID")
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          {/* <ModalHeader>Modal Title</ModalHeader> */}
-          {/* <ModalCloseButton /> */}
           <ModalBody>
             <p>You want to Delete user</p>
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='blue' mr={3} onClick={onClose}>
+            <Button colorScheme="blue" mr={3} onClick={onClose}>
               No
             </Button>
-            <Button variant='ghost' colorScheme="red"  onClick={deleteuser}>Yes</Button>
+            <Button variant="ghost" colorScheme="red" onClick={deleteuser}>
+              Yes
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

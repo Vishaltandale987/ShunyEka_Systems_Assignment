@@ -21,7 +21,7 @@ function AddFrom() {
   const handle_post_submiting_from = async () => {
     
     dispatch(addContact(formData));
-    
+    setFormData(initState)
 
   };
 
