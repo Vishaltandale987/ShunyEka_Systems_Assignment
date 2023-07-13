@@ -1,0 +1,19 @@
+.input_form {
+  width: 50%;
+  margin: auto;
+  padding: 1em;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.shareWrapper {
+  margin: auto;
+  text-align: center;
+}
+.title{
+    font-size: xx-large;
+}
+
+.input_form Input{
+    border: 1px solid black;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
