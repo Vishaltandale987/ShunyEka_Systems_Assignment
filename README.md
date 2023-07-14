@@ -10,7 +10,7 @@ https://shuny-eka-systems-assignment.vercel.app/
 
 # Backend Verecel Deployed Link:
 
-https://usermanager-o6ya.onrender.com/
+https://shuny-eka-systems-server.vercel.app/
 
 # Tech Stack :
 
